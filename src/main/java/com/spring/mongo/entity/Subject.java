@@ -12,7 +12,7 @@ public class Subject {
     @Field(name = "subject_name")
     private String subjectName;
 
-    @Field(name = "mark_obtained")
+    @Field(name = "marks_obtained")
     private int marksObtained;
 
     public String getId() {
