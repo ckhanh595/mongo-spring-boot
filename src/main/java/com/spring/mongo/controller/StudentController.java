@@ -1,5 +1,6 @@
 package com.spring.mongo.controller;
 
+import com.spring.mongo.entity.Department;
 import com.spring.mongo.entity.Student;
 import com.spring.mongo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,5 +92,10 @@ public class StudentController {
     @GetMapping("/nameStartsWith")
     public List<Student> nameStartsWith(@RequestParam String name) {
         return studentService.nameStartsWith(name);
+    }
+
+    @GetMapping("/byDepartmentId")
+    public List<Student> byDepartmentId(@RequestParam String deptId) {
+        return studentService.byDepartmentId(deptId);
     }
 }

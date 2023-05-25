@@ -1,7 +1,9 @@
 package com.spring.mongo.service;
 
 import com.spring.mongo.entity.Student;
+import com.spring.mongo.repository.DepartmentRepository;
 import com.spring.mongo.repository.StudentRepository;
+import com.spring.mongo.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
@@ -18,7 +20,21 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private SubjectRepository subjectRepository;
+
     public Student create(Student student) {
+        if (student.getDepartment() != null) {
+            departmentRepository.save(student.getDepartment());
+        }
+
+        if (student.getSubjects() != null && student.getSubjects().size() > 0) {
+            subjectRepository.saveAll(student.getSubjects());
+        }
+
         return studentRepository.save(student);
     }
 
@@ -76,5 +92,9 @@ public class StudentService {
 
     public List<Student> nameStartsWith(String name) {
         return studentRepository.findByNameStartsWith(name);
+    }
+
+    public List<Student> byDepartmentId(String deptId) {
+        return studentRepository.findByDepartmentId(deptId);
     }
 }
