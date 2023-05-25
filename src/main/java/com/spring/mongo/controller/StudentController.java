@@ -98,4 +98,9 @@ public class StudentController {
     public List<Student> byDepartmentId(@RequestParam String deptId) {
         return studentService.byDepartmentId(deptId);
     }
+
+    @GetMapping("/name-native")
+    public List<Student> searchByNameNative(@RequestParam String name) {
+        return studentService.searchByNameNative(name);
+    }
 }

@@ -97,4 +97,8 @@ public class StudentService {
     public List<Student> byDepartmentId(String deptId) {
         return studentRepository.findByDepartmentId(deptId);
     }
+
+    public List<Student> searchByNameNative(String name) {
+        return studentRepository.getByNameNative(name);
+    }
 }

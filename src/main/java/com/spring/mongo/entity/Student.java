@@ -17,6 +17,7 @@ public class Student {
     @Field(name = "name")
     private String name;
 
+    @Field(name = "mail")
     private String email;
 
     private int age;
